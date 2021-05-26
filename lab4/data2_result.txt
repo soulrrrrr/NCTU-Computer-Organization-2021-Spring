@@ -1,0 +1,79 @@
+addi r26,r0,6
+addi r27,r0,-4
+
+ii:3
+addi r26,r26,-1
+addi r27,r27,4
+
+add a0,r0,r26
+addi t1,zero,1
+
+jal fib			<-JAL:當fib function結束後PC會跳到j final
+
+sw r2,0(r27)
+bne r26,r0,ii
+j final
+
+fib:11(20)
+addi sp,sp,-12		//stack point -12
+sw ra,0(sp)		//以下三道sw將reg存入memory中
+sw s0,4(sp)
+sw s1,8(sp)
+add s0,a0,zero
+beq s0,zero,re1		//判斷是否f(0)	
+beq s0,t1,re1		//判斷是否f(1)
+addi a0,s0,-1
+jal fib
+add s1,zero,v0
+addi a0,s0,-2
+jal fib
+add v0,v0,s1
+
+exitfib:24
+lw ra,0(sp)
+lw s0,4(sp)
+lw s1,8(sp)
+addi sp,sp,12
+jr ra			//function call結束
+
+re1:29
+addi v0,zero,1
+j exitfib
+
+final:31
+nop
+
+==============================================================
+Register======================================================
+r0=          0, r1=          0, r2=          1, r3=          0,
+
+r4=          0, r5=          0, r6=          0, r7=          0,
+
+r8=          0, r9=          1, r10=          0, r11=          0,
+
+r12=          0, r13=          0, r14=          0, r15=          0,
+
+r16=          0, r17=          0, r18=          0, r19=          0,
+
+r20=          0, r21=          0, r22=          0, r23=          0,
+
+r24=          0, r25=          0, r26=          0, r27=         20,
+
+r28=          0, r29=        128, r30=          0, r31=         28,
+
+Memory========================================================
+m0=          8, m1=          5, m2=          3, m3=          2,
+
+m4=          1, m5=          1, m6=          0, m7=          0,
+
+m8=          0, m9=          0, m10=          0, m11=          0,
+
+m12=          0, m13=          0, m14=          0, m15=          0,
+
+m16=          0, m17=         88, m18=          2, m19=          1,
+
+m20=         88, m21=          2, m22=          1, m23=         88,
+
+m24=          2, m25=          1, m26=         88, m27=          2,
+
+m28=          1, m29=         28, m30=          0, m31=          0,
