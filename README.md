@@ -1,1 +1,2 @@
-# NCTU-Computer-Organization-2021-spring½²¤åÀA±Ð±Â 
+# NCTU-Computer-Organization-2021-spring
+è”¡æ–‡éŒ¦æ•™æŽˆ
