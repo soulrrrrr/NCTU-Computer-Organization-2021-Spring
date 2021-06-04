@@ -24,7 +24,8 @@ assign ALU_operation_o = ({ALUOp_i,funct_i} == 9'b010010011 || ALUOp_i == 3'b100
 					      ({ALUOp_i,funct_i} == 9'b010000100) ? 4'b0011 : //srlv 
 						  (ALUOp_i == 3'b000) ? 4'b0010 : //lw, sw(add)
 						  (ALUOp_i == 3'b001 || ALUOp_i == 3'b110) ? 4'b0110 : //beq, bne(sub)
-						  (ALUOp_i == 3'b011)? 4'b1000 : //blt, bgez
+						  (ALUOp_i == 3'b101)? 4'b0111 : //blt
+						  (ALUOp_i == 3'b011)? 4'b1000 : //bgez
 						  4'b0000;  //others
 assign FURslt_o =  ({ALUOp_i,funct_i} == 9'b010010011 || ALUOp_i == 3'b100) ? 2'b00 : //add addi
 					({ALUOp_i,funct_i} == 9'b010010001) ? 2'b00 :  //sub

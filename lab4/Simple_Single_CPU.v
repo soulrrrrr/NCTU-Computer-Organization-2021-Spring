@@ -22,7 +22,7 @@ wire [32-1:0] sign_instr;
 wire [32-1:0] zero_instr;
 wire [32-1:0] Src_ALU_Shifter;
 wire zero;
-wire less;
+wire res_1b;
 wire [32-1:0] result_ALU;
 wire [32-1:0] result_Shifter;
 wire overflow;
@@ -164,15 +164,15 @@ ALU ALU(
         .ALU_operation_i(ALUCtrl),
         .result(result_ALU),
         .zero(zero),
-        .less(less),
+        .res_1b(res_1b),
         .overflow(overflow)
         );
 
-Mux4to1 #(.size(1)) zero_less_Src(
+Mux4to1 #(.size(1)) zero_res_1b_Src(
         .data0_i(zero),
         .data1_i(~zero),
-        .data2_i(less),
-        .data3_i(~less),
+        .data2_i(res_1b),
+        .data3_i(res_1b),
         .select_i(BranchType),
         .data_o(PCSrc)
         );

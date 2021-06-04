@@ -162,7 +162,7 @@ always @ (*) begin
     end
 	if(instr_op_i == 6'b001110)begin // blt
 		RegWrite_o <= 1'b0;
-		ALUOp_o <= 3'b011; //3:compare
+		ALUOp_o <= 3'b101; //5:compare rs rt
 		ALUSrc_o <= 1'b0;
 		RegDst_o <= 2'b00;
 		Branch_o <= 1'b1;

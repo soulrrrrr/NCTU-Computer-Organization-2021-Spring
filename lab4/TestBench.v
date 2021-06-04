@@ -137,9 +137,9 @@ end
 end
 
 initial begin
-	//$readmemb("CO_P4_test_data1.txt", cpu.IM.Instr_Mem);		mode = 0;  // (A) basic
+	$readmemb("CO_P4_test_data1.txt", cpu.IM.Instr_Mem);		mode = 0;  // (A) basic
 	//$readmemb("CO_P4_test_data2.txt", cpu.IM.Instr_Mem);		mode = 1;  // (B) advance set1 (Fibonacci)
-	$readmemb("CO_P4_test_data2_2.txt", cpu.IM.Instr_Mem);	mode = 2;  // (C) advance set2
+	//$readmemb("CO_P4_test_data2_2.txt", cpu.IM.Instr_Mem);	mode = 2;  // (C) advance set2
     handle = $fopen("CO_P4_result.txt");
 	
 	CLK = 0;
