@@ -40,7 +40,7 @@ always #(`CYCLE_TIME/2) CLK = ~CLK;
 
 initial  begin
 
-$readmemb("CO_P5_test_data2.txt", cpu.IM.Instr_Mem);
+$readmemb("CO_P5_test_data1.txt", cpu.IM.Instr_Mem);
     
 	CLK = 0;
 	RST = 0;

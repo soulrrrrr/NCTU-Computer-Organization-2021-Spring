@@ -42,9 +42,9 @@ Adder Adder1(//next instruction
 
 // always@(PC_o)
 // begin
-//     $display("p: %b", instr);
+//     //$display("p: %b", instr);
 //     $display("pc_o: %b", PC_o);
-//     $display("pc+4: %b", PC_add1);
+//     //$display("pc+4: %b", PC_add1);
 // end
 		
 Adder Adder2(//branch
@@ -193,12 +193,13 @@ ALU ALU(
         .zero(zero),
         .overflow(overflow)
         );
-/*always@(*)
-begin
-	$display("ReadData1: %d", ReadData1);
-	$display("ALUinput2: %d", ALUinput2);
-	$display("ALUResult: %d", ALUResult);
-end*/
+// always@(PC_o)
+// begin
+//         $display("aa: %b", idex_o[186:181]);
+// 	$display("BranchUP: %d", exmem_o[104]);
+// 	$display("MemRead: %d", exmem_o[103]);
+// 	$display("MemWrite: %d", exmem_o[102]);
+// end
 Shifter shifter( 
 		.result(ShifterResult),
 		.leftRight(ALU_operation[0]),
@@ -249,11 +250,11 @@ Data_Memory DM(
         .MemWrite_i(exmem_o[102]),
         .data_o(DM_ReadData)
         );
-/*always@(*)
-begin
-	$display("Mux3_result: %d", $signed(Mux3_result));
-	$display("ReadData2: %d", $signed(ReadData2));
-end*/
+// always@(PC_o)
+// begin
+// 	$display("RegWrite: %d", memwb_o[70]);
+// 	$display("MemtoReg: %d", memwb_o[69]);
+// end
 Pipeline_Reg #(.size(71)) MEMWB( /////////////////////////////////
         .clk_i(clk_i),
 	.rst_n(rst_n),
